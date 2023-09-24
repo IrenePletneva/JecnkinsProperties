@@ -16,12 +16,12 @@ public class RemoteTestBase {
     @BeforeAll
     static void beforeAll() {
 
-        Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.browser = System.getProperty("browser");
-        Configuration.browserSize = System.getProperty("browserSize");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.pageLoadStrategy = "eager";
 
-        Configuration.remote = System.getProperty("wbhost");
+        Configuration.remote = System.getProperty("selenoidBaseUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of(

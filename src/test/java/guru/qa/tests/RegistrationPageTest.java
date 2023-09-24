@@ -8,13 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import guru.qa.pages.RegistrationPage;
-import guru.qa.utils.TestsData;
-
-
 public class RegistrationPageTest extends RemoteTestBase {
-    RegistrationPage registrationPage = new RegistrationPage();
-    TestsData testData = new TestsData();
 
     @Test
     @Tag("remote")
