@@ -17,18 +17,12 @@ public class RemoteTestBase {
     @BeforeAll
     static void beforeAll() {
 
-        String selenoidHome = System.getProperty("selenoidHome");
-        String selenoidCreds = System.getProperty("selenoidCreds");
-
-        baseUrl = "https://demoqa.com";
+        Configuration.baseUrl = System.getProperty("baseUrl");
+        Configuration.browser = System.getProperty("browser");
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browser = System.getProperty("browser");
-        Configuration.browserVersion = System.getProperty("browserVersion");
 
-        System.out.println(selenoidCreds);
-
-        Configuration.remote = "https://" + selenoidCreds + "@" + selenoidHome + "/wd/hub";
+        Configuration.remote = System.getProperty("wbhost");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of(
@@ -38,7 +32,6 @@ public class RemoteTestBase {
 
         Configuration.browserCapabilities = capabilities;
     }
-
 
     @BeforeEach
     void beforeEach() {
