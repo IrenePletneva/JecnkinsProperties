@@ -136,10 +136,4 @@ public class RegistrationPage {
         submitButton.click();
     }
 
-//    public RegistrationPage checkOverResults(String value, String valueCheck) {
-//        overTable.$(byText(value)).parent().shouldHave(text(valueCheck));
-//
-//        return this;
-//    }
-
 }

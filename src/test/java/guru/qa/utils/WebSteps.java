@@ -11,7 +11,7 @@ public class WebSteps {
     RegistrationPage registrationPage = new RegistrationPage();
     TableResultComponent tableResultComponent = new TableResultComponent();
 
-    @Step("Open page ")
+    @Step("Open page")
     public void openMainPage() {
 
         registrationPage.openPage();

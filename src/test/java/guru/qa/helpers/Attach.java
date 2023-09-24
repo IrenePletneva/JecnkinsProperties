@@ -1,4 +1,4 @@
-package guru.qa.utils;
+package guru.qa.helpers;
 
 
 import com.codeborne.selenide.Selenide;
