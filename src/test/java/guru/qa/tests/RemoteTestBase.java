@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import static com.codeborne.selenide.Configuration.baseUrl;
 
 import java.util.Map;
 
@@ -16,12 +17,18 @@ public class RemoteTestBase {
     @BeforeAll
     static void beforeAll() {
 
-        Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.browser = System.getProperty("browser");
+        String selenoidHome = System.getProperty("selenoidHome");
+        String selenoidCreds = System.getProperty("selenoidCreds");
+
+        baseUrl = "https://demoqa.com";
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.pageLoadStrategy = "eager";
+        Configuration.browser = System.getProperty("browser");
+        Configuration.browserVersion = System.getProperty("browserVersion");
 
-        Configuration.remote = System.getProperty("wbhost");
+        System.out.println(selenoidCreds);
+
+        Configuration.remote = "https://" + selenoidCreds + "@" + selenoidHome + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of(
@@ -31,6 +38,7 @@ public class RemoteTestBase {
 
         Configuration.browserCapabilities = capabilities;
     }
+
 
     @BeforeEach
     void beforeEach() {
